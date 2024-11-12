@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jaunu elementu pievienošana DOM</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .slide {
+        display: none;
+        padding: 2em;
+      }
+      .slide.active {
+        display: block;
+      }
+      h2 {
+        color: #333;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 1em;
+        border-radius: 5px;
+      }
+      .controls {
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+      }
+      button {
+        padding: 0.5em 1em;
+        margin: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <h2>1. Jaunu elementu pievienošana DOM</h2>
+      <p>
+        JavaScript ļauj mums dinamiski pievienot jaunus elementus DOM. To var
+        panākt ar tādām metodēm kā <strong>appendChild</strong>,
+        <strong>insertAdjacentHTML</strong> un citām.
+      </p>
+
+      <h2>
+        2. Izmantojot <code>document.createElement()</code> un
+        <code>appendChild()</code>
+      </h2>
+      <p>
+        Šī ir viena no visbiežāk izmantotajām metodēm. Vispirms izveido jaunu
+        elementu un pēc tam pievieno to kādam vecākelementam.
+      </p>
+      <pre><code>// 1. solis: izveido jaunu elementu
+const newElement = document.createElement('div');
+
+// 2. solis: iestata saturu vai atribūtus
+newElement.textContent = 'Sveika, pasaule!';
+newElement.className = 'new-class';
+
+// 3. solis: pievieno DOM
+document.body.appendChild(newElement);</code></pre>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <h2>3. Izmantojot <code>insertAdjacentHTML()</code></h2>
+      <p>
+        <code>insertAdjacentHTML()</code> ļauj mums ievietot HTML kodu dažādās
+        vietās attiecībā pret elementu.
+      </p>
+      <pre><code>// Ievieto HTML pirms elementa beigām
+const parentElement = document.getElementById('container');
+parentElement.insertAdjacentHTML('beforeend', '<p>Jauns Elements</p>');</code></pre>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <h2>4. Izmantojot <code>innerHTML</code></h2>
+      <p>
+        <code>innerHTML</code> ļauj mums tieši ievietot HTML, taču tas aizvieto
+        visu esošo saturu.
+      </p>
+      <pre><code>// Brīdinājums: innerHTML aizvieto esošo saturu
+const container = document.getElementById('container');
+container.innerHTML += '<p>Pievienots ar innerHTML</p>';</code></pre>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <h2>5. Izmantojot <code>prepend()</code> un <code>append()</code></h2>
+      <p>
+        <code>prepend()</code> pievieno elementus vecākelementa sākumā, kamēr
+        <code>append()</code> pievieno tos beigās.
+      </p>
+      <pre><code>// Pievieno sākumā
+parentElement.prepend(newElement);
+
+// Pievieno beigās
+parentElement.append(newElement);</code></pre>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <h2>6. Secinājums</h2>
+      <p>
+        Šīs ir dažas no galvenajām metodēm, kā pievienot elementus DOM,
+        izmantojot JavaScript.
+      </p>
+      <p>
+        Katrai no tām ir savi pielietošanas gadījumi un priekšrocības, atkarībā
+        no projekta prasībām.
+      </p>
+    </div>
+
+    <!-- Exercise 1: Create and Append Element -->
+    <div class="slide">
+      <h2>1. Uzdevums: Izveido un pievieno elementu</h2>
+      <ol>
+        <li>
+          Izmantojot <code>document.createElement()</code>, izveido
+          <code>&lt;p&gt;</code> elementu ar tekstu "Jauns paragrāfs".
+        </li>
+        <li>
+          Pievieno šo elementu <code>body</code> elementam, izmantojot
+          <code>appendChild()</code>.
+        </li>
+        <li>Pārbaudi, vai paragrāfs parādās lapā.</li>
+      </ol>
+    </div>
+
+    <!-- Exercise 2: Insert HTML with insertAdjacentHTML -->
+    <div class="slide">
+      <h2>2. Uzdevums: Ievieto HTML ar <code>insertAdjacentHTML</code></h2>
+      <ol>
+        <li>
+          Izveido <code>&lt;div&gt;</code> elementu ar id "container" HTML kodā.
+        </li>
+        <li>
+          Izmanto <code>insertAdjacentHTML()</code>, lai ievietotu
+          <code>&lt;p&gt;Vēl viens paragrāfs&lt;/p&gt;</code> tieši pirms
+          <code>container</code> elementa beigām.
+        </li>
+        <li>
+          Pārliecinies, vai jaunais paragrāfs parādās iekš
+          <code>container</code> elementa.
+        </li>
+      </ol>
+    </div>
+
+    <!-- Exercise 3: Prepend an Element -->
+    <div class="slide">
+      <h2>3. Uzdevums: Pievieno elementu sākumā</h2>
+      <ol>
+        <li>
+          Izveido <code>&lt;ul&gt;</code> ar dažiem
+          <code>&lt;li&gt;</code> elementiem HTML kodā.
+        </li>
+        <li>
+          Izmanto <code>prepend()</code>, lai pievienotu
+          <code>&lt;li&gt;Jauns elements sākumā&lt;/li&gt;</code>
+          <code>&lt;ul&gt;</code> elementa sākumā.
+        </li>
+        <li>
+          Pārbaudi, vai jaunais <code>li</code> elements parādās saraksta
+          sākumā.
+        </li>
+      </ol>
+    </div>
+
+    <!-- Exercise 4: Add Element Using innerHTML -->
+    <div class="slide">
+      <h2>4. Uzdevums: Pievieno elementu ar <code>innerHTML</code></h2>
+      <ol>
+        <li>
+          Izveido <code>&lt;div&gt;</code> elementu ar id "content" HTML failā.
+        </li>
+        <li>
+          Izmanto <code>innerHTML</code>, lai pievienotu
+          <code>&lt;h2&gt;Virsraksts&lt;/h2&gt;</code> un
+          <code>&lt;p&gt;Šis ir teksts&lt;/p&gt;</code> elementu iekš "content".
+        </li>
+        <li>Pārbaudi, vai abi elementi tiek pievienoti pareizi.</li>
+      </ol>
+    </div>
+
+    <div class="controls">
+      <button onclick="prevSlide()">Iepriekšējais</button>
+      <button onclick="nextSlide()">Nākamais</button>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === index);
+        });
+      }
+
+      function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+          currentSlide++;
+          showSlide(currentSlide);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          showSlide(currentSlide);
+        }
+      }
+    </script>
+  </body>
+</html>

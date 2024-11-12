@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Basics Presentation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+      }
+      .slide {
+        display: none;
+        width: 1000px;
+        margin: auto;
+      }
+      .active {
+        display: block;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      pre {
+        text-align: left;
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+      .output {
+        font-style: italic;
+        color: #555;
+      }
+      ul,
+      ol {
+        text-align: left;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Pamati</h1>
+    <div id="slides">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <h2>1. uzdevums: Objekti</h2>
+        <ol>
+          <li>
+            Izveido mainīgo, kurā glabājas objekts, kas reprezentē personu un
+            trīs tās īpašības, piem., vārdu, vecumu un vai persona ir students
+          </li>
+          <li>
+            Konsolē izvadi šīs personas vārdu izmantojot gan
+            <em>dot notation</em>, gan <em>bracket notation</em>
+          </li>
+          <li>
+            Izveido nosacījumu, kas pārbauda vai šī persona ir pilngadīga un
+            izdod attiecīgu paziņojumu
+          </li>
+          <li>
+            Izveido nosacījumu, kas pārbauda vai persona ir students un izvada
+            attiecīgu paziņojumu
+          </li>
+          <li>
+            Esošajam objektam pievieno jaunu atribūtu <em>course</em> ar vērtību
+            <em>PT2024</em>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <h2>2. uzdevums: Funkcijas</h2>
+        <ol>
+          <li>
+            Izveido funkciju, kas izvada konsolē statisku tekstu, piem., tavu
+            vārdu. Izsauc šo funkciju pārliecinoties, ka tā izvada vārdu.
+          </li>
+          <li>
+            Izveido funkciju ar vienu parametru <em>name</em>. Izsauc šo
+            funkciju kā argumentu padodot statisku tekstu, piem., savu vārdu
+          </li>
+          <li>Izveido funkciju, kura izvada konsolē skaitļus no 1 līdz 10</li>
+          <li>
+            Izveido funkciju ar diviem parametriem - skaitļiem, kuri nosaka, no
+            kura līdz kuram skaitlim veikt izvadi. Izsauc šo funkciju, piem., ar
+            argumentiem 5 un 8 un pārliecinies, ka izvade ir attiecīgi
+            <em>5, 6, 7, 8</em>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <button onclick="prevSlide()">Iepriekšējais</button>
+    <button onclick="nextSlide()">Nākamais</button>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(index) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+    </script>
+  </body>
+</html>

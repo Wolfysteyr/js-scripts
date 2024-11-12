@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Basics Presentation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+      }
+      .slide {
+        display: none;
+        width: 1000px;
+        margin: auto;
+      }
+      .active {
+        display: block;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      pre {
+        text-align: left;
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+      .output {
+        font-style: italic;
+        color: #555;
+      }
+      ul,
+      ol {
+        text-align: left;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Javascript Pamati</h1>
+    <div id="slides">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <h2>1. uzdevums: DOM elementi un notikumu klausītāji</h2>
+        <ol>
+          <li>
+            Izveido jaunu HTML projektu "html-dom-js" ar 'index.html' failu
+          </li>
+          <li>Izveido <em>text</em> tipa <em>input</em> lauku un pogu</li>
+          <li>
+            <em>index.html</em> failā izveido sadaļu <em>script</em> Javascript
+            koda sadaļai.
+          </li>
+          <li>
+            Izvadi savu vārdu Javascript konsolē pārliecinoties, ka kods tiek
+            izpildīts.
+          </li>
+          <li>
+            Ar Javascript palīdzību atrast <em>input</em> elementu un izvadīt tā
+            vērtību konsolē.
+          </li>
+          <li>
+            Izveidot funkciju <em>printName</em>, ka izvada tavu vārdu konsolē.
+          </li>
+          <li>
+            Izveidot notikumu klausītāju (event listener), kas klausās un spēj
+            reaģēt un pogas klikšķi. Izsaukt <em>printName</em> funkciju, kad uz
+            pogas tiek veikts klikšķis (click).
+          </li>
+          <li>
+            Uzlabot notikumu klausītāju, lai <em>printName</em> funkcijas vietā
+            tiktu izsaukta cita funkcija, kas izvada <em>input</em> lauka
+            vērtību.
+          </li>
+        </ol>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <h2>2. uzdevums: Lietotāja ievades apstrāde</h2>
+        <ol>
+          <li>
+            Izveido jaunu failu <em>loop.html</em>, kurā ir divi skaitļu ievades
+            lauki un poga.
+          </li>
+          <li>
+            Pirmā ievades lauka vērtībai ir jābūt mazākai par otrā ievades lauka
+            vērtību. Abiem skaitļiem ir jābūt naturāliem.
+          </li>
+          <li>
+            Izveidot pogas klikšķa notikuma klausītāju, kas pārbauda vai skaitļi
+            ir pareizi ievadīti. Pretējā gadījumā izdot
+            <em>alert</em> paziņojumu.
+          </li>
+          <li>
+            Ja skaitļi ir ievadīti pareizi, tad izvadīt konsolē visus naturālos
+            skaitļus, kuri atrodas starp šiem diviem skaitļiem.
+          </li>
+          <li>
+            Izveidot paragrāfa elementu zem pogas un tajā izvadīt nepieciešamos
+            skaitļus
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <button onclick="prevSlide()">Iepriekšējais</button>
+    <button onclick="nextSlide()">Nākamais</button>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(index) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+    </script>
+  </body>
+</html>

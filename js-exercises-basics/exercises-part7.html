@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jaunu elementu pievienošana DOM</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .slide {
+        display: none;
+        padding: 2em;
+      }
+      .slide.active {
+        display: block;
+      }
+      h2 {
+        color: #333;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 1em;
+        border-radius: 5px;
+      }
+      .controls {
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+      }
+      button {
+        padding: 0.5em 1em;
+        margin: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Slide 1 -->
+    <!-- Exercise: To-Do List App -->
+    <div class="slide active">
+      <h2>1. Uzdevums: Izveido "To-Do" saraksta aplikāciju</h2>
+      <p>
+        Šajā uzdevumā izveidosi vienkāršu "To-Do" sarakstu, kurā var pievienot
+        jaunus uzdevumus.
+      </p>
+      <ol>
+        <li>
+          HTML failā izveido <code>&lt;input&gt;</code> elementu un
+          <code>&lt;button&gt;</code> ar tekstu "Pievienot uzdevumu".
+        </li>
+        <li>
+          Izveido <code>&lt;ul&gt;</code> elementu, kur tiks pievienoti uzdevumi
+          kā saraksta elementi.
+        </li>
+        <li>
+          JavaScript failā:
+          <ul>
+            <li>
+              Pievieno <code>click</code> event listener
+              <code>button</code> elementam.
+            </li>
+            <li>
+              Event listener funkcijā izveido jaunu
+              <code>&lt;li&gt;</code> elementu ar uzdevuma tekstu no
+              <code>input</code> lauka un pievieno to
+              <code>&lt;ul&gt;</code> sarakstam.
+            </li>
+            <li>Pēc uzdevuma pievienošanas notīri <code>input</code> lauku.</li>
+          </ul>
+        </li>
+        <li>
+          Pārbaudi, vai vari pievienot jaunus uzdevumus sarakstam, izmantojot
+          pogu.
+        </li>
+      </ol>
+
+      <!-- Sample JavaScript Code -->
+      <pre><code>// Izvēlies elementus no HTML
+        const button = document. ...;
+        const input = document. ...;
+        const ul = document. ...;
+        
+        // Pievieno click event listener
+        button.addEventListener('click', function() {
+            // Izveido jaunu li elementu
+            const li = document.createElement('li');
+            li.textContent = ...;
+        
+            // Pievieno jauno li elementu ul sarakstam
+            ul.appendChild(...);
+        
+            // Notīra input lauku
+            ...
+        });
+        </code></pre>
+    </div>
+
+    <!-- Exercise: Add Remove Button to Each To-Do Item -->
+    <div class="slide">
+      <h2>2. Uzdevums: Pievieno pogu uzdevumu dzēšanai</h2>
+      <p>
+        Šajā uzdevumā uzlabosi "To-Do" sarakstu, pievienojot pogu katram
+        uzdevumam, lai to varētu dzēst.
+      </p>
+      <ol>
+        <li>
+          Katrā pievienotajā uzdevuma elementā (<code>&lt;li&gt;</code>) izveido
+          pogu ar tekstu "Dzēst".
+        </li>
+        <li>
+          Pievieno <code>click</code> event listener katrai "Dzēst" pogai, lai,
+          nospiežot to, attiecīgais uzdevums tiktu noņemts no saraksta.
+        </li>
+        <li>Pārbaudi, vai vari pievienot un dzēst uzdevumus sarakstā.</li>
+      </ol>
+
+      <!-- Sample JavaScript Code -->
+      <pre><code>// Izvēlies HTML elementus
+    
+    // Pievieno event listener pievienošanas pogai
+    button.addEventListener('click', function() {
+        ...
+    
+        // Izveido dzēšanas pogu un pievieno to li elementam
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Dzēst';
+        li.appendChild(...);
+    
+        // Pievieno dzēšanas funkcionalitāti
+        deleteButton.addEventListener('click', function() {
+            ...
+        });
+    
+        // Pievieno li elementu ul sarakstam un notīra ievades lauku
+        ul.appendChild(...);
+        ...
+    });
+    </code></pre>
+    </div>
+
+    <div class="controls">
+      <button onclick="prevSlide()">Iepriekšējais</button>
+      <button onclick="nextSlide()">Nākamais</button>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === index);
+        });
+      }
+
+      function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+          currentSlide++;
+          showSlide(currentSlide);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          showSlide(currentSlide);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Basics Presentation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+      }
+      .slide {
+        display: none;
+        width: 1000px;
+        margin: auto;
+      }
+      .active {
+        display: block;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      pre {
+        text-align: left;
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+      .output {
+        font-style: italic;
+        color: #555;
+      }
+      ul,
+      ol {
+        text-align: left;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Javascript Pamati</h1>
+    <div id="slides">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <h2>1. uzdevums: Objekti un Nosacījumi</h2>
+        <ol>
+          <li>
+            Izveido mainīgo, kurā glabājas objekts, kas reprezentē automašīnu ar
+            trim īpašībām: marku, modeli un gadu.
+          </li>
+          <li>
+            Konsolē izvadi automašīnas marku un modeli, izmantojot gan
+            <em>dot notation</em>, gan <em>bracket notation</em>.
+          </li>
+          <li>
+            Izveido nosacījumu, kas pārbauda vai automašīna ir vecāka par 10
+            gadiem, un izdod attiecīgu paziņojumu.
+            <div class="example">
+              Palīgs darbam ar datumiem: 'let currentYear = new
+              Date().getFullYear();'
+            </div>
+          </li>
+          <li>
+            Izveido nosacījumu, kas pārbauda vai automašīna ir Toyota marka. Ja
+            tā ir Toyota, izvada paziņojumu "Šī ir Toyota automašīna".
+          </li>
+          <li>
+            Esošajam objektam pievieno jaunu atribūtu <em>owner</em> ar vērtību
+            <em>nezināms</em>.
+          </li>
+        </ol>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <h2>2. uzdevums: Funkcijas ar atgriezto vērtību</h2>
+        <ol>
+          <li>
+            Izveido funkciju ar diviem parametriem - skaitļiem, kuri nosaka, no
+            kura līdz kuram skaitlim veikt izvadi. Izsauc šo funkciju, piem., ar
+            argumentiem 5 un 8 un pārliecinies, ka izvade ir attiecīgi
+            <em>5, 6, 7, 8</em>
+          </li>
+          <li>
+            Izveido funkciju, kas atgriež statisku tekstu, piemēram, tavu vārdu.
+            Izsauc šo funkciju, saglabājot atgriezto vērtību jaunā mainīgajā.
+            Konsolē izvadi jaunā mainīgā vērtību.
+          </li>
+          <li>
+            Izveido funkciju, kas pieņem divus skaitļus kā parametrus un atgriež
+            to summu. Izsauc šo funkciju, padodot divus skaitļus, un konsolē
+            izvadi atgriezto vērtību.
+          </li>
+          <li>
+            Izveido funkciju, kas pieņem divus skaitļus un atgriež lielāko no
+            tiem. Izsauc šo funkciju ar dažādiem skaitļiem un pārbaudi, vai tiek
+            atgriezts pareizais rezultāts.
+          </li>
+        </ol>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <h2>3. uzdevums: DOM un lietotāja ievade</h2>
+        <ol>
+          <li>
+            Izveido HTML lapu ar vienu <em>text</em> ievades lauku, pogu un
+            tukšu paragrāfu
+          </li>
+          <li>
+            Izveido <em>script</em> sadaļu, kurā izveido objektu ar 5 atribūtiem
+          </li>
+          <li>
+            Izmantojot <em>bracket notation</em> tehniku, izveido
+            funkcionalitāti, kas ļauj lietotājam <em>input</em> laukā ievadīt
+            vienu no 5 atribūtiem un, nospiežot pogu, atrast attiecīgā atribūta
+            vērtību objektā. Vērtība jāizvada tukšajā paragrāfā. Piem.,
+            lietotājs ievada "model", noklikšķina un paragrāfa teksta paradās
+            "Golf".
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <button onclick="prevSlide()">Iepriekšējais</button>
+    <button onclick="nextSlide()">Nākamais</button>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(index) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+    </script>
+  </body>
+</html>

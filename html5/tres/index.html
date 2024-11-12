@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSKN</title>
+  </head>
+  <body>
+    <input type="text" name="text" id="text" /><br />
+    <input type="button" value="Button" id="button" /><br />
+    <p id="paragraph"></p>
+    <script>
+      let car = {
+        make: "VW",
+        model: "Scirocco",
+        year: 2013,
+        color: "blue",
+        broken: false,
+      };
+
+      document.getElementById("button").addEventListener("click", write);
+
+      function write() {
+        let input = document.getElementById("text").value;
+
+        let value = car[input];
+
+        let elem = document.getElementById("paragraph");
+        elem.innerText = value;
+        document.body.appendChild(elem);
+      }
+    </script>
+  </body>
+</html>

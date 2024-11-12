@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Basics Presentation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+      }
+      .slide {
+        display: none;
+        width: 1000px;
+        margin: auto;
+      }
+      .active {
+        display: block;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      pre {
+        text-align: left;
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+      .output {
+        font-style: italic;
+        color: #555;
+      }
+      ul,
+      ol {
+        text-align: left;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Pamati</h1>
+    <div id="slides">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <h2>1. uzdevums: Vides sagatavošana</h2>
+        <ol>
+          <li>Izveido mapi <em>js-scripts</em> savā varda mapītē</li>
+          <li>Izveidoto mapi atver ar VS Code</li>
+          <li>Izveido tajā failu <em>output.js</em></li>
+          <li>
+            Izveidotajā failā ieraksti koda rindu, kas konsolē izvada tavu vārdu
+          </li>
+          <li>
+            Terminal aplikācijā <em>js-scripts</em> mapē izpildi komandu
+            <em>node output.js</em>
+          </li>
+        </ol>
+        <p>
+          Turpmākajos uzdevumos izmantot <em>node</em> (nevis interneta
+          pārlūku), lai izpildītu Javascript failus
+        </p>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <h2>2. uzdevums: Mainīgie</h2>
+        <ol>
+          <li>Izveidot failu <em>variables.js</em></li>
+          <li>
+            Izveidot <em>string</em> tipa mainīgo <em>name</em>, kurā tiek
+            glabāts tavs vārds
+          </li>
+          <li>
+            Izveidot <em>number</em> tipa mainīgo <em>age</em>, kurā tiek
+            glabāts tavs vecums
+          </li>
+          <li>
+            Izveidot <em>boolean</em> tipa mainīgo <em>isStudent</em>, kura
+            vērtība ir <em>true</em> jeb patiesa
+          </li>
+          <li>
+            Izveidot <em>number</em> tipa konstanti <em>PI</em>, kura vērtība ir
+            <em>3.14</em>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <h2>3. uzdevums: Masīvi un Cikli</h2>
+        <ol>
+          <li>Izveidot failu <em>arrays-loops.js</em></li>
+          <li>
+            Izveido divus <em>for</em> ciklus (<em>loop</em>), kuri izvada
+            skaitļus no 11 līdz 20 un no 20 līdz 11 attiecīgi
+          </li>
+          <li>
+            Izveidot masīvu jeb <em>array</em> tipa mainīgo, kurā tiek glabāti 5
+            tavu draugu vārdi
+          </li>
+          <li>Izvadi konsolē pirmā un trešā drauga vārdu</li>
+          <li>
+            Izveido mainīgo, kurā glabājas izveidotā masīva garums jeb elementu
+            skaits tajā
+          </li>
+          <li>
+            Izmantojot šo mainīgo, izveido ciklu, kas izvada katru vārdu jaunā
+            rindā
+          </li>
+          <li>
+            Papildini izveidoto ciklu ar numerāciju, piem., "1. Jānis", "2.
+            Antra" utt.
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <button onclick="prevSlide()">Iepriekšējais</button>
+    <button onclick="nextSlide()">Nākamais</button>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(index) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+    </script>
+  </body>
+</html>
